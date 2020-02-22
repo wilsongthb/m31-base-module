@@ -1,13 +1,15 @@
 <template>
-  <span>
-    <span>{{ format(moneyCodeChild, quantity) }}</span>
-  </span>
+  <span>{{ quantity | money(moneyCode) }}</span>
 </template>
-
 <script>
-import { format } from "money-formatter";
-
 export default {
+  components: {
+    //
+  },
+
+  // directives
+  // filters
+
   props: {
     moneyCode: {
       required: true
@@ -15,21 +17,28 @@ export default {
     quantity: {
       required: true
     }
-    // convertToDefault: {
-    //   default: true
-    // }
   },
+
+  data: () => ({
+    //
+  }),
+
   computed: {
-    moneyCodeChild() {
-      // console.log(this.moneyCode);
-      return this.$options.currencyList[
-        this.moneyCode ? this.moneyCode : this.$options.defaultCurrency
-      ].code;
-      // return currencyList[this.moneyCode].code;
-    }
+    //
   },
+
+  watch: {
+    //
+  },
+
+  mounted() {
+    //
+  },
+
   methods: {
-    format
+    //
   }
 };
 </script>
+
+<style></style>

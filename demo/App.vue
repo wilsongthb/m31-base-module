@@ -5,6 +5,9 @@
       <div class="col">
         {{ 341 | money }}
       </div>
+      <div class="col">
+        <app-span-money :quantity="43" :moneyCode="1"></app-span-money>
+      </div>
     </div>
 
     <div class="row">
@@ -51,5 +54,4 @@ export default {
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
 </style>
