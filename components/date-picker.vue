@@ -8,23 +8,17 @@
     :disabledDates="disabledDates"
     placeholder="Fecha"
   >
-    
   </v-datepicker>
 </template>
-
 <script>
 import { es } from "vuejs-datepicker/src/locale/index";
 import Datepicker from "vuejs-datepicker";
-import moment from "moment";
-import Vue from "vue";
 
-Vue.component("v-datepicker", Datepicker);
 let yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 const disableBeforeDates = {
   ranges: [
     {
-      // Disable dates in given ranges (exclusive).
       from: new Date(0, 1, 1),
       to: yesterday
     }
@@ -32,6 +26,13 @@ const disableBeforeDates = {
 };
 
 export default {
+  components: {
+    "v-datepicker": Datepicker
+  },
+
+  // directives
+  // filters
+
   props: {
     value: {},
     disabled: {
@@ -40,25 +41,17 @@ export default {
     disableBeforeDates: {
       default: false
     },
-    sDisableDays: {
-      default: "[]"
+    disabledDates: {
+      type: Object,
+      default: () => {}
     }
   },
+
   data: () => ({
     val: undefined,
-    es: es,
-    disabledDates: {}
+    es: es
   }),
-  created() {
-    if (this.disableBeforeDates) {
-      this.disabledDates = {
-        ...this.disabledDates,
-        ...disableBeforeDates
-      };
-    }
 
-    this.disabledDates["days"] = JSON.parse(this.sDisableDays);
-  },
   computed: {
     valueChild: {
       get() {
@@ -66,30 +59,26 @@ export default {
         return time.isValid() ? time.toDate() : null;
       },
       set(val) {
-        this.$emit("input", moment(val).format("YYYY-MM-DD"));
+        this.$emit("input", this.$options.moment(val).format("YYYY-MM-DD"));
       }
     }
   },
+
+  watch: {
+    //
+  },
+
+  created() {
+    //
+  },
+  mounted() {
+    //
+  },
+
   methods: {
-    
+    //
   }
-  // watch: {
-  //   value(to) {
-  //     if (to && !this.val) {
-  //       this.val = moment(to).toDate();
-  //       return;
-  //     }
-  //     if (to === undefined) {
-  //       this.val = undefined;
-  //     }
-  //   },
-  //   val(to) {
-  //     if (to) {
-  //       this.$emit("input", moment(to).format("YYYY-MM-DD"));
-  //     }
-  //   }
-  // }
 };
 </script>
 
-<style></style>
+<style scoped></style>

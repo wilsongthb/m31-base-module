@@ -3,7 +3,7 @@
     <th
       class="text-center app_th_arrow"
       @click.prevent="lastWeek()"
-      @keypress.enter.space="lastWeek()"
+      @keypress.enter="lastWeek()"
       tabindex="0"
     >
       <i class="fa fa-arrow-left"></i>
@@ -19,7 +19,7 @@
     <th
       class="text-center app_th_arrow"
       @click.prevent="nextWeek()"
-      @keypress.enter.space="nextWeek()"
+      @keypress.enter="nextWeek()"  
       tabindex="0"
     >
       <i class="fa fa-arrow-right"></i>

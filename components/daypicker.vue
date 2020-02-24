@@ -1,7 +1,7 @@
 <template>
   <div class="text-center text-nowrap">
     <div class="text-uppercase">{{ dayOfWeek }}</div>
-    <div class="h1  ">
+    <div class="h1">
       <a href="#" @click.prevent="lastday()"
         ><i class="fa fa-chevron-left"></i>
       </a>
@@ -27,14 +27,14 @@ export default {
   props: {
     value: {
       type: Date
-    },
-    setTodayAfterMounted: {
-      default: false
     }
+    // setTodayAfterMounted: {
+    //   default: false
+    // }
   },
 
   data: () => ({
-    day: "0",
+    day: 0,
     monthAndYear: "",
     dayOfWeek: ""
   }),
@@ -53,31 +53,34 @@ export default {
   },
 
   mounted() {
-    if (this.setTodayAfterMounted)
-      this.$emit("input", this.$options.moment().toDate());
+    // if (this.setTodayAfterMounted)
+    // this.$emit("input", this.$options.moment().toDate());
     // this.setValues(this.$options.moment());
   },
 
   methods: {
     setValues() {
+      // console.log("pill");
+
       let val = this.$options.moment(this.value);
       this.day = val.format("DD");
       this.monthAndYear = val.format("MMMM [de] YYYY");
       this.dayOfWeek = val.format("dddd");
     },
+
     lastday() {
       // ayer
       let val = this.$options.moment(this.value);
       val.add(-1, "day");
       this.$emit("input", val.toDate());
-      this.setValues();
+      // this.setValues();
     },
     nextDay() {
       // maniana
       let val = this.$options.moment(this.value);
       val.add(1, "day");
       this.$emit("input", val.toDate());
-      this.setValues();
+      // this.setValues();
     }
     // emitValue(val) {
     //   // this.4
