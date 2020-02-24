@@ -1,4 +1,5 @@
 import moment from "moment";
+import * as vueJsDatepickerLangs from "vuejs-datepicker/src/locale/index";
 
 /** Components */
 import alert from "./components/alert";
@@ -81,6 +82,12 @@ const BaseModule = {
     selectTime.moment = moment;
     trWeekpicker.moment = moment;
     ctrlYearMonth.moment = moment;
+
+    if (vueJsDatepickerLangs[locale]) {
+      datePicker.lang = vueJsDatepickerLangs[locale];
+    } else {
+      datePicker.lang = vueJsDatepickerLangs.en;
+    }
 
     Vue.directive("input-focused", InputFocusedDirective);
 

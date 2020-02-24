@@ -1,28 +1,23 @@
 <template>
   <v-datepicker
     v-model="valueChild"
-    :language="es"
+    :language="$options.lang"
     :disabled="disabled"
     input-class="form-control"
-    format="dd/MM/yyyy"
-    :disabledDates="disabledDates"
+    :format="formatDate"
+    :disabledDates="comDisabledDates"
     placeholder="Fecha"
   >
   </v-datepicker>
 </template>
 <script>
-import { es } from "vuejs-datepicker/src/locale/index";
 import Datepicker from "vuejs-datepicker";
 
 let yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
-const disableBeforeDates = {
-  ranges: [
-    {
-      from: new Date(0, 1, 1),
-      to: yesterday
-    }
-  ]
+const beforeDates = {
+  from: new Date(0, 1, 1),
+  to: yesterday
 };
 
 export default {
@@ -34,6 +29,9 @@ export default {
   // filters
 
   props: {
+    formatDate: {
+      default: "dd/MM/yyyy"
+    },
     value: {},
     disabled: {
       default: false
@@ -42,17 +40,25 @@ export default {
       default: false
     },
     disabledDates: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   },
 
   data: () => ({
     val: undefined,
-    es: es
+    lang: null
   }),
 
   computed: {
+    comDisabledDates() {
+      return {
+        ranges: [
+          ...this.disabledDates,
+          this.disableBeforeDates ? beforeDates : {}
+        ]
+      };
+    },
     valueChild: {
       get() {
         var time = this.$options.moment(this.value);
@@ -71,6 +77,7 @@ export default {
   created() {
     //
   },
+
   mounted() {
     //
   },

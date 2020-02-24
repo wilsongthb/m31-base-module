@@ -3,9 +3,16 @@
     <!-- Puedes usar los componentes aqui -->
 
     <div class="mb-2 card p-2">
+      
+    </div>
+
+    <div class="mb-2 card p-2">
       <app-daypicker v-model="date"></app-daypicker>
 
-      <app-datepicker v-model="date1"></app-datepicker>
+      <app-datepicker
+        v-model="date1"
+        :disableBeforeDates="true"
+      ></app-datepicker>
     </div>
 
     <div class="row">
@@ -49,7 +56,7 @@ export default {
   data: () => ({
     currency: 1,
     date: moment("2020-01-01").toDate(),
-    date1: "2019-09-01"
+    date1: "2020-02-28"
   }),
 
   computed: {
