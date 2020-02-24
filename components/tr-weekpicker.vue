@@ -1,9 +1,12 @@
 <template>
   <tr>
-    <th class="text-center">
-      <a href="#" @click.prevent="lastWeek()">
-        <i class="fa fa-arrow-left"></i>
-      </a>
+    <th
+      class="text-center app_th_arrow"
+      @click.prevent="lastWeek()"
+      @keypress.enter.space="lastWeek()"
+      tabindex="0"
+    >
+      <i class="fa fa-arrow-left"></i>
     </th>
     <th
       class="text-center text-capitalize text-nowrap"
@@ -13,14 +16,19 @@
     >
       <span>{{ l.weekDay }}</span>
     </th>
-    <th class="text-center">
-      <a href="#" @click.prevent="nextWeek()">
-        <i class="fa fa-arrow-right"></i>
-      </a>
+    <th
+      class="text-center app_th_arrow"
+      @click.prevent="nextWeek()"
+      @keypress.enter.space="nextWeek()"
+      tabindex="0"
+    >
+      <i class="fa fa-arrow-right"></i>
     </th>
   </tr>
 </template>
 <script>
+import moment from "moment";
+
 export default {
   components: {
     //
@@ -30,19 +38,28 @@ export default {
   // filters
 
   props: {
-    setWithCurrentWeek: {
-      default: true
+    dayFormat: {
+      default: "dddd DD"
     },
+    dateFormat: {
+      default: "L"
+    },
+    // setWithCurrentWeek: {
+    //   default: true
+    // },
     dayToBegin: {
-      default: 0
+      default: 0,
+      validator(value) {
+        return [0, 1, 2, 3, 4, 5, 6].includes(value);
+      }
     }
   },
 
   data: () => ({
-    currentTime: null, // Moment
-    weekDays: [], // Array<int>
-    iniTime: "", // String
-    endTime: "" // String
+    currentMoment: moment(), // Moment
+    weekDays: [] // Array<int>
+    // iniTime: "", // String
+    // endTime: "" // String
   }),
 
   computed: {
@@ -54,51 +71,61 @@ export default {
   },
 
   mounted() {
-    if (this.setWithCurrentWeek) {
-      this.currentTime = this.$options.moment();
-      this.updateTimes();
-    }
+    this.currentTime = this.$options.moment();
+    this.updateTimes();
   },
 
   methods: {
-    // setCurrentTime(val = new Date()) {
-    //   this.currentTime = val;
-    //   this.updateTimes();
-    // },
-    setTime(val) {
-      this.currentTime = val;
+    getIniMoment() {
+      return this.currentMoment
+        .clone()
+        .add(-this.currentMoment.day() + this.dayToBegin, "days");
+    },
+    getIniDate() {
+      return this.getIniMoment().format(this.dateFormat);
+    },
+    getEndMoment() {
+      return this.getIniMoment().add(7, "days");
+    },
+    getEndDate() {
+      return this.getEndMoment().format(this.dateFormat);
+    },
+    setMoment(val) {
+      this.currentMoment = val.clone();
+      this.updateTimes();
+    },
+    setDate(val, format = null) {
+      this.currentMoment = this.$options.moment(val, format);
       this.updateTimes();
     },
     updateTimes() {
-      // const moment = this.$options.moment;
-      let iniTime = this.$options
-        .moment(this.currentTime)
-        .add(-this.currentTime.day() + this.dayToBegin, "days");
-      let endTime = iniTime.clone().add(7, "days");
-      this.iniTime = iniTime.format("YYYY-MM-DD");
-      this.endTime = endTime.format("YYYY-MM-DD");
+      let iniDate = this.getIniMoment();
       this.weekDays = [];
       for (let index = 0; index < 7; index++) {
         this.weekDays.push({
-          day: iniTime.day().toString(),
-          date: iniTime.format("YYYY-MM-DD"),
-          weekDay: iniTime.format("dddd DD")
+          day: iniDate.day().toString(),
+          date: iniDate.format(this.dateFormat),
+          weekDay: iniDate.format(this.dayFormat)
         });
-        iniTime.add(1, "days");
+        iniDate.add(1, "days");
       }
     },
     nextWeek() {
-      this.currentTime.add(7, "days");
+      this.currentMoment.add(7, "days");
       this.updateTimes();
-      this.$emit("changeWeek", this.$options.moment(this.iniTime).toDate());
+      this.$emit("changeWeek", this.getIniDate());
     },
     lastWeek() {
-      this.currentTime.add(-7, "days");
+      this.currentMoment.add(-7, "days");
       this.updateTimes();
-      this.$emit("changeWeek", this.$options.moment(this.iniTime).toDate());
+      this.$emit("changeWeek", this.getIniDate());
     }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.app_th_arrow {
+  cursor: pointer;
+}
+</style>
