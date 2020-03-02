@@ -1,3 +1,7 @@
+const MOMENT_DATE_FORMAT = "YYYY-MM-DD";
+const DEFAULT_LOCALE = "es";
+const DEFAULT_CURRENCY = 1;
+
 import moment from "moment";
 import * as vueJsDatepickerLangs from "vuejs-datepicker/src/locale/index";
 
@@ -68,8 +72,8 @@ const BaseModule = {
       currencyList = {
         1: { name: "DOLARES", symbol: "$", code: "USD" }
       },
-      defaultCurrency = 1,
-      locale = "es"
+      defaultCurrency = DEFAULT_CURRENCY,
+      locale = DEFAULT_LOCALE
     }
   ) {
     moment.locale(locale);
@@ -79,6 +83,7 @@ const BaseModule = {
     selectCurrency.defaultCurrency = defaultCurrency;
     daypicker.moment = moment;
     datePicker.moment = moment;
+    datePicker.dateFormat = MOMENT_DATE_FORMAT;
     selectTime.moment = moment;
     trWeekpicker.moment = moment;
     ctrlYearMonth.moment = moment;

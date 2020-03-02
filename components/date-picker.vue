@@ -4,7 +4,7 @@
     :language="$options.lang"
     :disabled="disabled"
     input-class="form-control"
-    :format="formatDate"
+    :format="formatter"
     :disabledDates="comDisabledDates"
     placeholder="Fecha"
   >
@@ -30,13 +30,15 @@ export default {
 
   props: {
     formatDate: {
-      default: "dd/MM/yyyy"
+      default: "L"
     },
     value: {},
     disabled: {
+      type: Boolean,
       default: false
     },
     disableBeforeDates: {
+      type: Boolean,
       default: false
     },
     disabledDates: {
@@ -65,7 +67,10 @@ export default {
         return time.isValid() ? time.toDate() : null;
       },
       set(val) {
-        this.$emit("input", this.$options.moment(val).format("YYYY-MM-DD"));
+        this.$emit(
+          "input",
+          this.$options.moment(val).format(this.$options.dateFormat)
+        );
       }
     }
   },
@@ -83,7 +88,9 @@ export default {
   },
 
   methods: {
-    //
+    formatter(date) {
+      return this.$options.moment(date).format(this.formatDate);
+    }
   }
 };
 </script>
