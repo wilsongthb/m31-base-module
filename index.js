@@ -1,6 +1,4 @@
-const MOMENT_DATE_FORMAT = "YYYY-MM-DD";
-const DEFAULT_LOCALE = "es";
-const DEFAULT_CURRENCY = 1;
+import { MOMENT_DATE_FORMAT, DEFAULT_LOCALE, DEFAULT_CURRENCY } from "./consts";
 
 import moment from "moment";
 import * as vueJsDatepickerLangs from "vuejs-datepicker/src/locale/index";
@@ -46,6 +44,7 @@ import snackbar from "./components/snackbar";
 
 /** Directives */
 import InputFocusedDirective from "./directives/input-focused-animation";
+import TitleDirective from "./directives/title";
 
 /** Filters */
 import { percentFilter } from "./filters/percent-filter";
@@ -56,7 +55,8 @@ import {
   timeFormatFilter,
   dateTimeFormatFilter,
   simpleDateFormatFilter,
-  ageFilter
+  ageFilter,
+  momentFormat
 } from "./filters/date-format-filter";
 import acronimousFilter from "./filters/acronimous-filter";
 import moneyFilter from "./filters/money-filter";
@@ -95,6 +95,7 @@ const BaseModule = {
     }
 
     Vue.directive("input-focused", InputFocusedDirective);
+    Vue.directive("title", TitleDirective);
 
     Vue.filter("percent", percentFilter);
     Vue.filter("dateFormat", dateFormatFilter(moment));
@@ -109,6 +110,7 @@ const BaseModule = {
     Vue.filter("age", ageFilter(moment));
     Vue.filter("acronimous", acronimousFilter);
     Vue.filter("money", moneyFilter(defaultCurrency, currencyList));
+    Vue.filter("momentFormat", momentFormat(moment));
 
     Vue.component("app-alert", alert);
     Vue.component("app-badge-status", badgeStatus);

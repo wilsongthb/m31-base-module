@@ -1,8 +1,9 @@
 import moment from "moment";
+import { MOMENT_TIME_FORMAT } from "../consts";
 
 export const momentFormat = function(momentInstance = moment) {
-  return function(value, format, formatInput = "YYYY-MM-DD hh:mm") {
-    return momentInstance(value, formatInput).format(format);
+  return function(value, format, formatInput = "") {
+    return momentInstance(value, formatInput || undefined).format(format);
   };
 };
 
@@ -34,8 +35,7 @@ export const timeFormatFilter = function(moment) {
   return function(value) {
     if (!value) value = "";
     let time = moment(value);
-    // return time.format("LT");
-    return time.format("hh:mma");
+    return time.format(MOMENT_TIME_FORMAT);
   };
 };
 
