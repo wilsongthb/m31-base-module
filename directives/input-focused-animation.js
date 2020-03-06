@@ -5,7 +5,8 @@ export default {
     el = new HTMLElement()
     // , binding, vnode
   ) {
-    // v-demo:foo.a.b
+    // message = 'hello'
+    // v-demo:foo.a.b="message"
 
     // var s = JSON.stringify
     // el.innerHTML =

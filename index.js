@@ -94,8 +94,8 @@ const BaseModule = {
       datePicker.lang = vueJsDatepickerLangs.en;
     }
 
-    Vue.directive("input-focused", InputFocusedDirective);
-    Vue.directive("title", TitleDirective);
+    Vue.directive("app-input-focused", InputFocusedDirective);
+    Vue.directive("app-title", TitleDirective);
 
     Vue.filter("percent", percentFilter);
     Vue.filter("dateFormat", dateFormatFilter(moment));

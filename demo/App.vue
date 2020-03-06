@@ -2,9 +2,7 @@
   <div class="container">
     <!-- Puedes usar los componentes aqui -->
 
-    <div class="mb-2 card p-2">
-      
-    </div>
+    <div class="mb-2 card p-2"></div>
 
     <div class="mb-2 card p-2">
       <app-daypicker v-model="date"></app-daypicker>
@@ -37,6 +35,12 @@
         <app-select-currency v-model="currency"></app-select-currency>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <span class="h3" v-app-title="'llamame'">EL titulo</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -56,7 +60,7 @@ export default {
   data: () => ({
     currency: 1,
     date: moment("2020-01-01").toDate(),
-    date1: "2020-02-28"
+    date1: "2020-03-28"
   }),
 
   computed: {

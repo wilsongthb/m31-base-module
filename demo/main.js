@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import BaseModule from "../index";
+import "bootstrap";
 
 Vue.config.productionTip = false;
 

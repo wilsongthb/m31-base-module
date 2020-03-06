@@ -11,7 +11,7 @@
       :type="seePassword ? 'text' : 'password'"
       :autocomplete="autocomplete"
       :value="value"
-      v-input-focused
+      v-app-input-focused
       @input="$emit('input', $event.target.value)"
       class="form-control"
     />

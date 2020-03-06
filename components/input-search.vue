@@ -11,7 +11,7 @@
       :name="name"
       :value="value"
       @input="$emit('input', $event.target.value)"
-      v-input-focused
+      v-app-input-focused
     />
     <div class="input-group-append" @click.prevent="search()">
       <span class="input-group-text">
