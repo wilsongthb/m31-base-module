@@ -1,14 +1,10 @@
 <template>
   <div class="input-group input-group-alternative">
-    <!-- 
-      v-model="valueChild"
-     -->
     <input
       class="form-control form-control-alternative"
       type="text"
       :placeholder="placeholder"
       @keyup="keyUpHandler($event)"
-      :name="name"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-app-input-focused
@@ -24,11 +20,11 @@
 <script>
 import { debounce } from "lodash";
 
+const LIST_KEY_CONTROLS_NO_SPECTED = [37, 38, 39, 40, 18, 17, 9, 16];
+const KEY_CODE_ENTER = 13;
+
 export default {
   props: {
-    name: {
-      default: "app-input-search"
-    },
     placeholder: {
       type: String,
       default: "Buscar ..."
@@ -37,23 +33,12 @@ export default {
       default: ""
     }
   },
-  computed: {
-    // valueChild: {
-    //   get() {
-    //     return this.value;
-    //   },
-    //   set(val) {
-    //     this.$emit("input", val);
-    //   }
-    // }
-  },
   methods: {
     keyUpHandler(e) {
-      let listKeyControlsNoSpected = [37, 38, 39, 40, 18, 17, 9, 16];
-      if (listKeyControlsNoSpected.includes(e.keyCode)) {
+      if (LIST_KEY_CONTROLS_NO_SPECTED.includes(e.keyCode)) {
         return;
       }
-      if (e.keyCode == 13) {
+      if (e.keyCode == KEY_CODE_ENTER) {
         this.search(e.target.value);
         return;
       }

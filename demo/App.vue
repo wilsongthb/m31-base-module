@@ -38,7 +38,7 @@
 
     <div class="row">
       <div class="col">
-        <span class="h3" v-app-title="">EL titulo</span>
+        <span class="h3" data-placement="bottom" v-app-title="'gaa'">EL titulo</span>
       </div>
     </div>
   </div>
