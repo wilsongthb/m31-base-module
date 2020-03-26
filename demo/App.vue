@@ -8,6 +8,7 @@
       <app-daypicker v-model="date"></app-daypicker>
 
       <app-datepicker
+        inputClass="form-control form-control-sm"
         v-model="date1"
         :disableBeforeDates="true"
       ></app-datepicker>
@@ -38,7 +39,9 @@
 
     <div class="row">
       <div class="col">
-        <span class="h3" data-placement="bottom" v-app-title="'gaa'">EL titulo</span>
+        <span class="h3" data-placement="bottom" v-app-title="'gaa'"
+          >EL titulo</span
+        >
       </div>
     </div>
   </div>

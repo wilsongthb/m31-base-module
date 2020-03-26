@@ -6,6 +6,10 @@
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilsongthb/m31-base-module.git"
+  },
   "dependencies": {
     "bootstrap-vue": "^2.5.0",
     "jquery": "^3.4.1",

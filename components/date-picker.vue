@@ -3,7 +3,7 @@
     v-model="valueChild"
     :language="$options.lang"
     :disabled="disabled"
-    input-class="form-control"
+    :input-class="inputClass"
     :format="formatter"
     :disabledDates="comDisabledDates"
     placeholder="Fecha"
@@ -44,6 +44,10 @@ export default {
     disabledDates: {
       type: Array,
       default: () => []
+    },
+    inputClass: {
+      default: "form-control",
+      type: String
     }
   },
 

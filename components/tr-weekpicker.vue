@@ -19,7 +19,7 @@
     <th
       class="text-center app_th_arrow"
       @click.prevent="nextWeek()"
-      @keypress.enter="nextWeek()"  
+      @keypress.enter="nextWeek()"
       tabindex="0"
     >
       <i class="fa fa-arrow-right"></i>
@@ -101,7 +101,7 @@ export default {
     updateTimes() {
       let iniDate = this.getIniMoment();
       this.weekDays = [];
-      for (let index = 0; index < 7; index++) {
+      for (let i = 0; i < 7; i++) {
         this.weekDays.push({
           day: iniDate.day().toString(),
           date: iniDate.format(this.dateFormat),
