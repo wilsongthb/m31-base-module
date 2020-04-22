@@ -13,3 +13,5 @@ Vue.use(BaseModule, {
 });
 ```
 
+saludos! :D
+
