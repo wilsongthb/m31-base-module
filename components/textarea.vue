@@ -7,6 +7,7 @@
       :maxlength="maxlength"
       v-model="valueChild"
       :disabled="disabled"
+      :placeholder="placeholder"
     ></textarea>
     <small class="form-text text-muted" v-if="value"
       >{{ value.length }}/{{ maxlength }}
@@ -41,7 +42,8 @@ export default {
     },
     disabled: {
       default: false
-    }
+    },
+    placeholder: { default: "" }
   }
 };
 </script>

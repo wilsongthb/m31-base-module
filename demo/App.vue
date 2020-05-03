@@ -44,6 +44,8 @@
         >
       </div>
     </div>
+
+    <app-textarea v-model="msg" :placeholder="'Gaaaa'"></app-textarea>
   </div>
 </template>
 <script>
@@ -63,7 +65,8 @@ export default {
   data: () => ({
     currency: 1,
     date: moment("2020-01-01").toDate(),
-    date1: "2020-03-28"
+    date1: "2020-03-28",
+    msg: ""
   }),
 
   computed: {
