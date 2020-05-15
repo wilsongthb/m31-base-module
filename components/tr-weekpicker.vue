@@ -85,7 +85,7 @@ export default {
       return this.getIniMoment().format(this.dateFormat);
     },
     getEndMoment() {
-      return this.getIniMoment().add(7, "days");
+      return this.getIniMoment().add(6, "days"); // a partir del primer dia ya cuenta como uno
     },
     getEndDate() {
       return this.getEndMoment().format(this.dateFormat);
@@ -111,12 +111,12 @@ export default {
       }
     },
     nextWeek() {
-      this.currentMoment.add(7, "days");
+      this.currentMoment.add(7, "days"); // go to begin day
       this.updateTimes();
       this.$emit("changeWeek", this.getIniDate());
     },
     lastWeek() {
-      this.currentMoment.add(-7, "days");
+      this.currentMoment.add(-7, "days"); // go to last beginning day
       this.updateTimes();
       this.$emit("changeWeek", this.getIniDate());
     }
