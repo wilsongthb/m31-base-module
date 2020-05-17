@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col">
         <table class="table table-bordered">
-          <app-tr-weekpicker ref="elWeek" :dayToBegin="1"></app-tr-weekpicker>
+          <app-tr-weekpicker ref="elWeek" :dayToBegin="5"></app-tr-weekpicker>
         </table>
       </div>
     </div>

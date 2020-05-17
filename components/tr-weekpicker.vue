@@ -71,7 +71,7 @@ export default {
   },
 
   mounted() {
-    this.currentTime = this.$options.moment();
+    this.currentMoment = this.$options.moment();
     this.updateTimes();
   },
 
@@ -79,7 +79,7 @@ export default {
     getIniMoment() {
       return this.currentMoment
         .clone()
-        .add(-this.currentMoment.day() + this.dayToBegin, "days");
+        .add(-((7 + this.currentMoment.day() - this.dayToBegin) % 7), "days");
     },
     getIniDate() {
       return this.getIniMoment().format(this.dateFormat);
