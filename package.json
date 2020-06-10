@@ -1,8 +1,9 @@
 {
   "name": "m31-base-module",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Componentes base para aplicaciones vue de wilsongthb",
   "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "test": "test"
   },
