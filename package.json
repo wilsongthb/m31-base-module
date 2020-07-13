@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^4.2.2",
+    "eslint": "^7.4.0",
+    "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
@@ -30,7 +32,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "vue-cli-service serve demo/main.js"
+    "serve": "vue-cli-service serve demo/main.js"
   },
   "author": "M31",
   "license": "ISC"
