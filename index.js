@@ -41,6 +41,7 @@ import ctrlYearMonth from "./components/ctrl-year-month";
 import btnLoading from "./components/btn-loading";
 import inputPassword from "./components/input-password";
 import snackbar from "./components/snackbar";
+import InputAmount from "./components/InputAmount.vue";
 
 /** Directives */
 import InputFocusedDirective from "./directives/input-focused-animation";
@@ -149,6 +150,7 @@ const BaseModule = {
     Vue.component("app-btn-loading", btnLoading);
     Vue.component("app-input-password", inputPassword);
     Vue.component("app-snackbar", snackbar);
+    Vue.component("app-input-amount", InputAmount);
 
     // pseudo name
     Vue.component("app-form-errors", smallFormErrors);

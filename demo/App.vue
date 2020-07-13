@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <!-- Puedes usar los componentes aqui -->
-
-    <div class="mb-2 card p-2"></div>
+    <div class="mb-2 card p-2">
+      <app-input-amount v-model="money"></app-input-amount>
+    </div>
 
     <div class="mb-2 card p-2">
       <app-daypicker v-model="date"></app-daypicker>
@@ -66,7 +66,8 @@ export default {
     currency: 1,
     date: moment("2020-01-01").toDate(),
     date1: "2020-03-28",
-    msg: ""
+    msg: "",
+    money: 0
   }),
 
   computed: {

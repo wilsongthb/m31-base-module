@@ -2,7 +2,7 @@
   <select
     :disabled="disabled"
     class="custom-select"
-    ref="select"
+    ref="elSel"
     v-model="valueChild"
     :required="required"
   >
@@ -14,6 +14,13 @@
 
 <script>
 export default {
+  components: {
+    //
+  },
+
+  // directives
+  // filters
+
   props: {
     value: {
       default: undefined
@@ -28,18 +35,12 @@ export default {
       default: false
     }
   },
-  methods: {
-    setDefault() {
-      this.$emit("input", this.$options.defaultCurrency);
-    },
-    getEl() {
-      return this.$refs.select;
-    }
-  },
+
+  data: () => ({
+    //
+  }),
+
   computed: {
-    // moneyCodeDef() {
-    //   return this.$options.defaultCurrency;
-    // },
     valueChild: {
       get() {
         return this.value;
@@ -51,6 +52,28 @@ export default {
     list() {
       return this.$options.currencyList;
     }
+  },
+
+  watch: {
+    //
+  },
+
+  mounted() {
+    //
+  },
+
+  methods: {
+    setDefault() {
+      this.$emit("input", this.$options.defaultCurrency);
+    },
+    getEl() {
+      return this.$refs.elSel;
+    },
+    focus() {
+      this.getEl().focus();
+    }
   }
 };
 </script>
+
+<style scoped></style>
