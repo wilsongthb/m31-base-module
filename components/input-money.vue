@@ -3,7 +3,7 @@
     <div class="input-group-prepend">
       <app-select-currency
         style="border-radius: 0.25rem 0rem 0rem 0.25rem"
-        ref="selectMoney"
+        ref="elSelCurr"
         :disabled="disabled || disableSelectCurrency"
         :required="required"
         v-model="moneyCodeChild"
@@ -16,7 +16,7 @@
       v-model="quantityChild"
       :disabled="disabled"
       :required="required"
-      ref="inNum"
+      ref="elInpQua"
       lang="en"
       step="0.01"
     />
@@ -24,6 +24,9 @@
 </template>
 
 <script>
+const CURRENCY_TARGET = 1;
+const INPUT_TARGET = 2;
+
 export default {
   props: {
     quantity: {},
@@ -50,8 +53,11 @@ export default {
       this.$emit("update:quantity", 0);
       this.$refs.selectMoney.setDefault();
     },
-    focusToQuantity() {
-      this.$refs.inNum.focus();
+    focus(target = INPUT_TARGET) {
+      if(target == INPUT_TARGET)
+        this.$refs.elInpQua.focus();
+      else if (target == CURRENCY_TARGET)
+        this.$refs.elSelCurr.focus();
     }
   },
   computed: {
