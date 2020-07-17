@@ -5,7 +5,13 @@ const moneyFilter = function(
   currencyList = { 1: { symbol: "$" } }
 ) {
   return function(value, currency = defaultCurrency) {
-    return numberFormatter(`${currencyList[currency].symbol} #,###.00`, value);
+    if (currencyList[currency]) {
+      return numberFormatter(
+        `${currencyList[currency].symbol} #,###.00`,
+        value
+      );
+    }
+    return numberFormatter(`#,###.00`, value) || '';
   };
 };
 

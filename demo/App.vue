@@ -2,6 +2,8 @@
   <div class="container">
     <div class="mb-2 card p-2">
       <app-input-amount v-model="money"></app-input-amount>
+
+      {{ money | money(moneyCode) }}
     </div>
 
     <div class="mb-2 card p-2">
@@ -67,7 +69,8 @@ export default {
     date: moment("2020-01-01").toDate(),
     date1: "2020-03-28",
     msg: "",
-    money: 0
+    money: 0,
+    moneyCode: 23
   }),
 
   computed: {
