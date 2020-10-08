@@ -51,7 +51,7 @@ export default {
     parseFloat,
     setDefault() {
       this.$emit("update:quantity", 0);
-      this.$refs.selectMoney.setDefault();
+      this.$refs.elSelCurr.setDefault();
     },
     focus(target = INPUT_TARGET) {
       if(target == INPUT_TARGET)
