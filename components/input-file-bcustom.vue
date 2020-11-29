@@ -27,9 +27,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-$custom-file-text: (
-  en: "Browse",
-  es: "Elegir"
-);
+<style >
+
 </style>
