@@ -7,11 +7,11 @@ const moneyFilter = function(
   return function(value, currency = defaultCurrency) {
     if (currencyList[currency]) {
       return numberFormatter(
-        `${currencyList[currency].symbol} #,###.00`,
+        `${currencyList[currency].symbol} #,##0.00`,
         value
       );
     }
-    return numberFormatter(`#,###.00`, value) || '';
+    return numberFormatter(`#,##0.00`, value) || '';
   };
 };
 
