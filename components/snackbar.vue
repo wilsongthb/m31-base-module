@@ -89,7 +89,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .app_snackbar_container {
   position: fixed;
   bottom: 0px;
@@ -103,11 +103,8 @@ export default {
 }
 
 .app_snackbar {
-  // justify-content: center;
-  // align-items: flex-end;
   border-radius: 4px;
   box-sizing: border-box;
-  // display: flex;
   max-width: 33vw;
   min-width: 344px;
   padding: 14px 16px;
